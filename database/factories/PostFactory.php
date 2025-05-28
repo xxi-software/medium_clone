@@ -17,16 +17,16 @@ class PostFactory extends Factory
    */
   public function definition(): array
   {
-    $title = $this->faker()->sentence();
-    $content = $this->faker()->paragraph(5);
+    $title = $this->faker->sentence();
+    $content = $this->faker->paragraph(5);
     return [
-      "image" => $this->faker()->imageUrl(640, 480, 'nature', true),
+      "image" => $this->faker->imageUrl(640, 480, 'nature', true),
       "title" => $title,
       "slug" => \Illuminate\Support\Str::slug($title),
       "content" => $content,
       "category_id" => Category::inRandomOrder()->first()->id,
       "user_id" => 1,
-      "published_at" => $this->faker()->optional()->dateTimeBetween(),
+      "published_at" => $this->faker->optional()->dateTimeBetween(),
     ];
   }
 }
