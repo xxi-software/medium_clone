@@ -10,30 +10,35 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
-    public function run(): void
-    {
+  /**
+   * Seed the application's database.
+   */
+  public function run(): void
+  {
+    User::factory(10)->create();
     $categories = [
       "Tech",
+      "Health",
       "Science",
       "Sports",
       "Politics",
       "Entertainment"
     ];
 
-      foreach ($categories as $category) {
-        Category::create(["name"=> $category ]);
-      }
+    foreach ($categories as $category) {
+      Category::create(["name" => $category]);
+    }
+    Post::factory(100)->create();
 
-      Post::factory(100)->create();
-        // User::factory(10)->create();
-        /*
+    $this->call([
+      PostSeeder::class,
+    ]);
+    // User::factory(10)->create();
+    /*
         User::factory()->create([
             'name' => 'Test User from Seeder',
             'email' => 'testfromSeeder@example.com',
         ]);
         */
-    }
+  }
 }
