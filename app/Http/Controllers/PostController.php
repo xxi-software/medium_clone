@@ -18,7 +18,7 @@ class PostController extends Controller
     // For now, we will just return all posts
     // This is a simple example, you might want to add more logic here
     $categories = Category::get();
-    $post = Post::orderBy("created_at", "DESC")->get();
+    $post = Post::orderBy("created_at", "DESC")->paginate(5);
     dump($post);
     return view('dashboard', [
       'categories' => $categories,
