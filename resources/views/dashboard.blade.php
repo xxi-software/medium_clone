@@ -45,6 +45,7 @@
         </div>
         @endforeach
       </div>
+      {{ $posts->onEachSide(1)->links() }}
     </div>
   </div>
 </x-app-layout>
