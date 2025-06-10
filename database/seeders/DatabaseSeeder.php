@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
     $this->call([
       PostSeeder::class,
     ]);
-    // User::factory(10)->create();
+    User::factory(10)->create();
     /*
         User::factory()->create([
             'name' => 'Test User from Seeder',

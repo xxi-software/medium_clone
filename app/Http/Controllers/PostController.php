@@ -16,12 +16,9 @@ class PostController extends Controller
     // Fetch all posts and pass them to the dashboard view
     // You can also use pagination if needed, e.g., Post::paginate(10)
     // For now, we will just return all posts
-    // This is a simple example, you might want to add more logic here
-    $categories = Category::get();
+    // This is a simple example, you might want to add more logic here    
     $post = Post::orderBy("created_at", "DESC")->simplePaginate(5);
-    dump($post);
     return view('dashboard', [
-      'categories' => $categories,
       'posts' => $post,
       'title' => 'Dashboard',
     ]);
