@@ -18,7 +18,7 @@ class PostController extends Controller
     // For now, we will just return all posts
     // This is a simple example, you might want to add more logic here    
     $post = Post::orderBy("created_at", "DESC")->simplePaginate(5);
-    return view('dashboard', [
+    return view('post.index', [
       'posts' => $post,
       'title' => 'Dashboard',
     ]);
@@ -29,7 +29,7 @@ class PostController extends Controller
    */
   public function create()
   {
-    //
+    return view("post.create");
   }
 
   /**
@@ -37,7 +37,7 @@ class PostController extends Controller
    */
   public function store(Request $request)
   {
-    //
+    dd($request->all());
   }
 
   /**
