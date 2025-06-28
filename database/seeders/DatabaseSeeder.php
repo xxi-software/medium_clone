@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
    */
   public function run(): void
   {
-    User::factory(10)->create();
     $categories = [
       "Tech",
       "Health",
@@ -28,12 +27,12 @@ class DatabaseSeeder extends Seeder
     foreach ($categories as $category) {
       Category::create(["name" => $category]);
     }
-    Post::factory(100)->create();
+    //Post::factory(100)->create();
 
     $this->call([
       PostSeeder::class,
     ]);
-    User::factory(10)->create();
+    //User::factory(10)->create();
     /*
         User::factory()->create([
             'name' => 'Test User from Seeder',

@@ -15,7 +15,6 @@
     </a>
   </div>
   <a href="#" class="block w-36 h-36">
-    <img class="rounded-t-lg w-full h-full object-cover" src="https://flowbite.com/docs/images/blog/image-1.jpg"
-      alt="" />
+    <img class="rounded-t-lg w-full h-full object-cover" src="{{ Storage::url($post->image) }}" alt="" />
   </a>
 </div>
