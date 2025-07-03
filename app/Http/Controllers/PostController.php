@@ -20,7 +20,7 @@ class PostController extends Controller
     // Fetch all posts and pass them to the dashboard view
     // You can also use pagination if needed, e.g., Post::paginate(10)
     // For now, we will just return all posts
-    // This is a simple example, you might want to add more logic here    
+    // This is a simple example, you might want to add more logic here
     $post = Post::orderBy("created_at", "DESC")->simplePaginate(5);
     return view('post.index', [
       'posts' => $post,
@@ -44,10 +44,10 @@ class PostController extends Controller
    */
   public function store(PostCreateRequest $request)
   {
-    $validated = $request->validate();
+    $validated = $request->validated();
 
     $image = $validated["image"];
-    unset($validated["image"]);
+    //unset($validated["image"]);
     $validated["user_id"] = Auth::id();
     $validated["slug"] = Str::slug($validated["title"]);
 
@@ -64,9 +64,9 @@ class PostController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(Post $post)
+  public function show(string $username, Post $post)
   {
-    //
+    return view("post.show", ["post" => $post]);
   }
 
   /**

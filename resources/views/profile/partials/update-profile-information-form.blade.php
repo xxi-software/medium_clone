@@ -13,10 +13,16 @@
     @csrf
   </form>
 
-  <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+  <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
     @csrf
 
     @method('patch')
+    @if ($user->image)
+    <div class="mb-4">
+      <img src="{{ $user->imageUrl() }}" alt="{{ $user->name }}'s avatar"
+        class="w-16 h-16 rounded-full object-cover border border-gray-300 dark:border-gray-600">
+    </div>
+    @endif
     <!--Image-->
     <div>
       <x-input-label for="image" :value="__('Avatar')" />
@@ -41,7 +47,7 @@
     <!--username-->
     <div>
       <x-input-label for="username" :value="__('Username')" />
-      <x-text-input id="username" username="username" type="text" class="mt-1 block w-full"
+      <x-text-input id="username" name="username" type="text" class="mt-1 block w-full"
         :value="old('username', $user->username)" required autofocus autocomplete="username" />
       <x-input-error class="mt-2" :messages="$errors->get('username')" />
     </div>
@@ -75,7 +81,7 @@
     <!--Bio-->
     <div class="mt-4">
       <x-input-label for="bio" :value="__('Bio')" />
-      <x-input-textarea id="bio" class="block mt-1 w-full" name="bio" :value="old('bio')" />
+      <x-input-textarea id="bio" class="block mt-1 w-full" name="bio" :value="old('bio', $user->bio)" />
       <x-input-error :messages="$errors->get('bio')" class="mt-2" />
     </div>
 
